@@ -6,8 +6,9 @@ import App from "./App.vue";
 //@ts-expect-error ejs打包
 import zhCn from "element-plus/dist/locale/zh-cn.mjs";
 const app = createApp(App);
-
+import "virtual:svg-icons-register";
 app.use(ElementPlus, {
   locale: zhCn,
 });
 app.mount("#app");
+console.log(import.meta.env);
