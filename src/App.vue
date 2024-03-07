@@ -7,7 +7,6 @@
   <!-- <svg>
       <use xlink:href="#icon-arrow"></use>
     </svg> -->
-
 </template>
 
 <script setup>
