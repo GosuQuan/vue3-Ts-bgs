@@ -3,33 +3,18 @@
     <el-row>
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
-        <el-form class="login_form">
+        <el-form class="login_form" :model="loginForm" :rules="rules">
           <h1>Hello</h1>
           <h2>Welcome</h2>
-          <el-form-item>
-            <el-input
-              :prefix-icon="User"
-              type="text"
-              v-model="loginForm.username"
-            ></el-input>
+          <el-form-item prop="username">
+            <el-input :prefix-icon="User" type="text" v-model="loginForm.username"></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-input
-              type="password"
-              :prefix-icon="Lock"
-              v-model="loginForm.password"
-              show-password
-            >
+          <el-form-item prop="password">
+            <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password>
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-button
-              class="login_btn"
-              type="primary"
-              @click="login"
-              :loading="loading"
-              >登录</el-button
-            >
+            <el-button class="login_btn" type="primary" @click="login" :loading="loading">登录</el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -65,6 +50,23 @@ const login = async () => {
     });
   }
 };
+//custom rules
+const validateUsername = (rule: any, value: any, callback: any) => {
+  console.log(rule);
+  console.log(value);
+  callback(console.log("叫一个"));
+  if (value == "") {
+    //业务逻辑
+    //console.log("输入账号")
+  }
+};
+//require
+const rules = {
+  username: [{ validator: validateUsername, trigger: "change" }],
+  password: [
+    // { validator: validatePass2, trigger: 'blur' }
+  ],
+}
 </script>
 
 <style scoped lang="scss">
@@ -88,9 +90,7 @@ const login = async () => {
   width: 100%;
 }
 
-.h1 {
-}
+.h1 {}
 
-.h2 {
-}
+.h2 {}
 </style>
