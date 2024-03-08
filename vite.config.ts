@@ -6,6 +6,15 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          javascriptEnabled: true,
+          additionalData: '@import "./src/styles/variable.scss";',
+        },
+      },
+    },
+
     plugins: [
       vue(),
       createSvgIconsPlugin({

@@ -50,6 +50,7 @@ let $router = useRouter();
 let loading = ref(false);
 const login = async () => {
   loading.value = true;
+  console.log(getTime());
 
   //use Store to ajax
   try {
