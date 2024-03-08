@@ -7,14 +7,29 @@
           <h1>Hello</h1>
           <h2>Welcome</h2>
           <el-form-item prop="username">
-            <el-input :prefix-icon="User" type="text" v-model="loginForm.username"></el-input>
+            <el-input
+              :prefix-icon="User"
+              type="text"
+              v-model="loginForm.username"
+            ></el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password>
+            <el-input
+              type="password"
+              :prefix-icon="Lock"
+              v-model="loginForm.password"
+              show-password
+            >
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-button class="login_btn" type="primary" @click="login" :loading="loading">登录</el-button>
+            <el-button
+              class="login_btn"
+              type="primary"
+              @click="login"
+              :loading="loading"
+              >登录</el-button
+            >
           </el-form-item>
         </el-form>
       </el-col>
@@ -28,19 +43,21 @@ import { reactive, ref } from "vue";
 import useUserStore from "@/store/module/user";
 import { useRouter } from "vue-router";
 import { ElNotification } from "element-plus";
+import { getTime } from "@/utils/time";
 let loginForm = reactive({ username: "admin", password: "111111" });
 let useStore = useUserStore();
 let $router = useRouter();
 let loading = ref(false);
 const login = async () => {
   loading.value = true;
+
   //use Store to ajax
   try {
     await useStore.userLogin(loginForm);
     $router.push("/");
     ElNotification({
       type: "success",
-      message: "登录成功",
+      message: `Hi,${getTime()}好`,
     });
   } catch (error) {
     loading.value = false;
@@ -66,7 +83,7 @@ const rules = {
   password: [
     // { validator: validatePass2, trigger: 'blur' }
   ],
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -90,7 +107,9 @@ const rules = {
   width: 100%;
 }
 
-.h1 {}
+.h1 {
+}
 
-.h2 {}
+.h2 {
+}
 </style>
