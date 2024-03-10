@@ -1,9 +1,10 @@
 <template>
   <div class="layout_container">
-
     <div class="layout_slider">123</div>
     <div class="layout_tabbar">213</div>
-    <div class="layout_main">321</div>
+    <div class="layout_main">
+      <p style="height: 100000px; background-color: green"></p>
+    </div>
   </div>
 </template>
 
@@ -13,8 +14,6 @@
 .layout_container {
   width: 100%;
   height: 100vh;
-  background-color: red;
-
 
   .layout_slider {
     width: $base-menu-width;
@@ -30,9 +29,16 @@
     left: $base-menu-width;
     height: $base-tabbar-height;
   }
-  .layout_main{
-    
-  }
 
+  .layout_main {
+    position: absolute;
+    width: calc(100% - $base-menu-width);
+    height: calc(100vh - $base-tabbar-height);
+    background-color: yellowgreen;
+    left: $base-menu-width;
+    top: $base-tabbar-height;
+    padding: 20px;
+    overflow: auto;
+  }
 }
 </style>

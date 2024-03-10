@@ -32,6 +32,7 @@
             >
           </el-form-item>
         </el-form>
+        <router-link to="/upload">Go to upload</router-link>
       </el-col>
     </el-row>
   </div>

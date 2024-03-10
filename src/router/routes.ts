@@ -15,6 +15,11 @@ export const constantRoute = [
     component: () => import("@/views/404/index.vue"),
   },
   {
+    path: "/upload",
+    component: () => import("@/views/upload/index.vue"),
+    name: "upload",
+  },
+  {
     path: "/:pathMatch(.*)*",
     redirect: "/404",
     name: "Any",

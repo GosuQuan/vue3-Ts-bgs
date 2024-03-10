@@ -2,4 +2,19 @@
 $base-menu-width: 260px;
 $base-tabbar-height: 50px;
 //左侧菜单的
-$base-menu-background: #001529
+$base-menu-background: #001529;
+
+::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+    background: $base-menu-background
+}
+
+::-webkit-scrollbar-thumb{
+ width:10px;
+ background-color: yellowgreen;
+ border-radius:10px;
+}

@@ -1,10 +1,13 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import { viteMockServe } from "vite-plugin-mock";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+  let env = loadEnv(mode, process.cwd());
+  console.log(env.VITE_SERVER)
   return {
     //css config
     css: {
@@ -15,7 +18,15 @@ export default defineConfig(({ command }) => {
         },
       },
     },
+    server: {
+      proxy: {
+        [env.VITE_APP_BASE_API]: {
+          target: env.VITE_SERVER,
+          changeOrigin: true,
 
+        },
+      },
+    },
     plugins: [
       vue(),
       createSvgIconsPlugin({
