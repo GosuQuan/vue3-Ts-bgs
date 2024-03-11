@@ -7,7 +7,7 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   let env = loadEnv(mode, process.cwd());
-  console.log(env.VITE_SERVER)
+  console.log(env.VITE_SERVER);
   return {
     //css config
     css: {
@@ -23,7 +23,6 @@ export default defineConfig(({ command, mode }) => {
         [env.VITE_APP_BASE_API]: {
           target: env.VITE_SERVER,
           changeOrigin: true,
-
         },
       },
     },

@@ -7,5 +7,6 @@ enum API {
   UPLOAD_ALREADY = "/upload/upload_already",
 }
 export const upload_merge = () => request.get(API.UPLOAD_MERGE);
-const upload_singlefile = (data) => request.post(API.UPLOAD_SINGLEFILE, data);
+export const upload_singleFile = (data) => 
+request.post(API.UPLOAD_SINGLEFILE, data, { headers: { "Content-Type": "multipart/form-data" } });
 const upload_already = (data) => request.post(API.UPLOAD_ALREADY, data);
