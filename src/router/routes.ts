@@ -20,6 +20,11 @@ export const constantRoute = [
     name: "upload",
   },
   {
+    path: "/virtuallist",
+    component: () => import("@/views/virtualList/index.vue"),
+    name: "virtualList",
+  },
+  {
     path: "/:pathMatch(.*)*",
     redirect: "/404",
     name: "Any",
