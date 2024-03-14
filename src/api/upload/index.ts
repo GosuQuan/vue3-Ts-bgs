@@ -12,7 +12,7 @@ const UPLOAD_FORMDATA_CONFIG = {
 };
 const MERGE_FORMDATA_CONFIG = {
   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-}
+};
 export const upload_merge = (data) =>
   request.post(API.UPLOAD_MERGE, data, MERGE_FORMDATA_CONFIG);
 export const upload_singleFile = (data) =>

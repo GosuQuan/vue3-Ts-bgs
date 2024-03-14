@@ -1,7 +1,13 @@
 <template>
   <div>
     <h1>大文件分片上传</h1>
-    <el-upload class="upload-demo" :on-change="handleClick" drag :http-request="uploadBigFile" multiple>
+    <el-upload
+      class="upload-demo"
+      :on-change="handleClick"
+      drag
+      :http-request="uploadBigFile"
+      multiple
+    >
       <i class="el-icon-upload"></i>
       <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
       <div class="el-upload__tip" slot="tip">
@@ -12,7 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import { upload_singleFile, upload_already, upload_chunk, upload_merge } from "@/api/upload";
+import {
+  upload_singleFile,
+  upload_already,
+  upload_chunk,
+  upload_merge,
+} from "@/api/upload";
 import { ref } from "vue";
 import SparkMD5 from "spark-md5";
 const file = ref<File>();
@@ -42,7 +53,7 @@ const upload = async () => {
         alert("file upload success");
       }
     })
-    .catch((err) => { });
+    .catch((err) => {});
 };
 
 //upload the file then return the hash of each files
@@ -69,7 +80,6 @@ const changeBuffer = (file) => {
   });
 };
 
-
 const uploadBigFile = async () => {
   //get Hash
   const { HASH, suffix } = await changeBuffer(file.value);
@@ -81,9 +91,7 @@ const uploadBigFile = async () => {
       console.log(data.FileList);
       already.value = data.FileList;
     }
-  } catch (error) {
-    
-  }
+  } catch (error) {}
   //文件切片处理
   //100KB
 
@@ -91,7 +99,7 @@ const uploadBigFile = async () => {
     count = Math.ceil(file.value.size / max),
     index = 0,
     chunks = [];
-  console.log(file.value.size)
+  console.log(file.value.size);
   if (count > 100) {
     max = file.value.size / 100;
     count = 100;
@@ -113,15 +121,13 @@ const uploadBigFile = async () => {
     // progress bar to 100%
 
     try {
-      console.log(HASH)
-      const data = await upload_merge({ HASH: HASH, count })
-      if (+data.code === 0)
-        alert("恭喜，上传成功")
+      console.log(HASH);
+      const data = await upload_merge({ HASH: HASH, count });
+      if (+data.code === 0) alert("恭喜，上传成功");
       return;
     } catch (err) {
       console.log("切片合并失败！");
     }
-
   };
 
   //upload chunk
