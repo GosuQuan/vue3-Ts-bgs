@@ -6,6 +6,12 @@ export const constantRoute = [
     name: "login", //命名路由
   },
   {
+    path: "/authofbutton",
+    component: () => import("@/views/authofButton/index.vue"),
+    name: "authofButton", //权限按钮控制
+  },
+
+  {
     path: "/",
     component: () => import("@/views/layout/index.vue"),
     name: "layout",
